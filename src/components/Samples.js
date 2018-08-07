@@ -21,6 +21,7 @@ import SimpleMap from '../samples/simple-map';
 import ApplyTheme from '../samples/apply-theme';
 import ChangeChartTypeRuntime from '../samples/change-chart-type-runtime';
 import UseAnnotations from '../samples/use-annotations';
+import RenderAlert from '../samples/render-alert';
 
 var options = {
   tabSize: "4",
@@ -155,6 +156,7 @@ class Samples extends Component {
                       <Route path='/apply-theme' component={ApplyTheme} />
                       <Route path='/change-chart-type-runtime' component={ChangeChartTypeRuntime} />
                       <Route path='/use-annotations' component={UseAnnotations} />
+                      <Route path='/render-alert' component={RenderAlert} />
                     </div>
                   </div>
                 </div>

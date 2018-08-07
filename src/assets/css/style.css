@@ -122,6 +122,10 @@
   text-align: center;
 }
 
+.chart-wrapper-inner p {
+  margin: 0;
+}
+
 .code-view .card,
 .code-view {
   overflow: hidden;

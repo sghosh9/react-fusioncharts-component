@@ -15,7 +15,8 @@
     "13": "/world-map",
     "14": "/apply-theme",
     "15": "/change-chart-type-runtime",
-    "16": "/use-annotations"
+    "16": "/use-annotations",
+    "17": "/render-alert"
   },
   "wrapperSampleMapping": {
     "react-fc": []
@@ -228,6 +229,19 @@
       "className": "UseAnnotations",
       "code": "import React, { Component } from 'react';\nimport ReactDOM from 'react-dom';\nimport FusionCharts from 'fusioncharts/core';\nimport Spline from 'fusioncharts/viz/spline';\nimport ReactFC from 'react-fusioncharts';\nimport FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion';\n\nReactFC.fcRoot(FusionCharts, Spline, FusionTheme);\n\nconst chartConfigs = {\n  type: 'spline',\n  width: 600,\n  height: 400,\n  dataFormat: 'json',\n  dataSource: {/* see data tab */ },\n};\n\nclass Chart extends Component {\n  render () {\n    return (\n      <ReactFC {...chartConfigs} />\n    )\n  }\n}\n\nReactDOM.render(\n  <Chart />,\n  document.getElementById('root'),\n);\n",
       "data": "{\r\n    \"chart\": {\r\n        \"caption\": \"Bakersfield Central - Total footfalls\",\r\n        \"subCaption\": \"Last week\",\r\n        \"xAxisName\": \"Day\",\r\n        \"yAxisName\": \"No. of Visitors (In 1000s)\",\r\n        \"showValues\": \"0\",\r\n        \"theme\": \"fusion\"\r\n    },\r\n    \"annotations\": {\r\n        \"groups\": [\r\n            {\r\n                \"id\": \"anchor-highlight\",\r\n                \"items\": [\r\n                    {\r\n                        \"id\": \"high-star\",\r\n                        \"type\": \"circle\",\r\n                        \"x\": \"$dataset.0.set.2.x\",\r\n                        \"y\": \"$dataset.0.set.2.y\",\r\n                        \"radius\": \"12\",\r\n                        \"color\": \"#6baa01\",\r\n                        \"border\": \"2\",\r\n                        \"borderColor\": \"#f8bd19\"\r\n                    },\r\n                    {\r\n                        \"id\": \"label\",\r\n                        \"type\": \"text\",\r\n                        \"text\": \"Highest footfall 25.5K\",\r\n                        \"fillcolor\": \"#6baa01\",\r\n                        \"rotate\": \"90\",\r\n                        \"x\": \"$dataset.0.set.2.x+75\",\r\n                        \"y\": \"$dataset.0.set.2.y-2\"\r\n                    }\r\n                ]\r\n            }\r\n        ]\r\n    },\r\n    \"data\": [\r\n        {\r\n            \"label\": \"Mon\",\r\n            \"value\": \"15123\"\r\n        },\r\n        {\r\n            \"label\": \"Tue\",\r\n            \"value\": \"14233\"\r\n        },\r\n        {\r\n            \"label\": \"Wed\",\r\n            \"value\": \"25507\"\r\n        },\r\n        {\r\n            \"label\": \"Thu\",\r\n            \"value\": \"9110\"\r\n        },\r\n        {\r\n            \"label\": \"Fri\",\r\n            \"value\": \"15529\"\r\n        },\r\n        {\r\n            \"label\": \"Sat\",\r\n            \"value\": \"20803\"\r\n        },\r\n        {\r\n            \"label\": \"Sun\",\r\n            \"value\": \"19202\"\r\n        }\r\n    ]\r\n}\r\n"
+    },
+    "17": {
+      "title": "Render Alert",
+      "desc": "",
+      "logo": "logo.svg",
+      "logoHover": "logo-hover.svg",
+      "interactiveViewURL": {
+        "react-fc": "https://embed.plnkr.co/qIKY9suwowEvMvunuX9e/"
+      },
+      "directory": "render-alert",
+      "className": "RenderAlert",
+      "code": "import React, { Component } from 'react';\nimport ReactDOM from 'react-dom';\nimport FusionCharts from 'fusioncharts/core';\nimport Column2D from 'fusioncharts/viz/column2d';\nimport ReactFC from 'react-fusioncharts';\nimport FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion';\n\nReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);\n\nconst chartConfigs = {\n  type: 'column2d',\n  width: 600,\n  height: 400,\n  dataFormat: 'json',\n  dataSource: {/* see data tab */ },\n};\n\nclass Chart extends Component {\n  constructor(props) {\n    super(props);\n\n    this.state = {\n      message: 'You will see a notification here after chart completes rendering'\n    };\n\n    this.renderComplete = this.renderComplete.bind(this);\n  }\n\n  // Event callback handler for 'rendered' event.\n  // Shows a message below the chart.\n  renderComplete() {\n    this.setState({\n      message: 'Chart has completed rendering'\n    });\n  }\n\n  render () {\n    return (\n      <div>\n        <ReactFC {...chartConfigs} fcEvent-rendered={this.renderComplete}/>\n        <p style={{ padding: '10px', background: '#f5f2f0' }}>{this.state.message}</p>\n      </div>\n    )\n  }\n}\n\nReactDOM.render(\n  <Chart />,\n  document.getElementById('root'),\n);\n",
+      "data": "{\r\n    \"chart\": {\r\n        \"caption\": \"Countries With Most Oil Reserves [2017-18]\",\r\n        \"subCaption\": \"In MMbbl = One Million barrels\",\r\n        \"xAxisName\": \"Country\",\r\n        \"yAxisName\": \"Reserves (MMbbl)\",\r\n        \"numberSuffix\": \"K\",\r\n        \"theme\": \"fusion\"\r\n    },\r\n    \"data\": [\r\n        {\r\n            \"label\": \"Venezuela\",\r\n            \"value\": \"290\"\r\n        },\r\n        {\r\n            \"label\": \"Saudi\",\r\n            \"value\": \"260\"\r\n        },\r\n        {\r\n            \"label\": \"Canada\",\r\n            \"value\": \"180\"\r\n        },\r\n        {\r\n            \"label\": \"Iran\",\r\n            \"value\": \"140\"\r\n        },\r\n        {\r\n            \"label\": \"Russia\",\r\n            \"value\": \"115\"\r\n        },\r\n        {\r\n            \"label\": \"UAE\",\r\n            \"value\": \"100\"\r\n        },\r\n        {\r\n            \"label\": \"US\",\r\n            \"value\": \"30\"\r\n        },\r\n        {\r\n            \"label\": \"China\",\r\n            \"value\": \"30\"\r\n        }\r\n    ]\r\n}\r\n"
     }
   }
 }
